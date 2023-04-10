@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './image.css'
 import { NavLink, useNavigate } from "react-router-dom";
 function Register() {
- 
+  
+    const [userData, setUserData] = useState({
+      firstname:'',
+      lastname:'',
+      dob:'',
+      email:'',
+      password:''
+    })
+
+   
     return (
         <>
         <div className="bef ">
@@ -43,21 +52,22 @@ function Register() {
         <div className="my-5 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-black after:mt-0.5 after:flex-1 after:border-t after:border-black">
           <p className="mx-4 mb-0 text-center font-semibold text-gray-900">Or</p>
         </div>
-        <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded" type="text" placeholder="First Name" />
-        <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded" type="text" placeholder="Last Name" />
-        <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded" type="date" placeholder="Date of Birth" />
-        <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded" type="text" placeholder="Email Address" />
+        <form method='post'>
+        <input  className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4" type="text" placeholder="First Name" />
+        <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4" type="text" placeholder="Last Name" />
+        <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4" type="date" placeholder="Date of Birth" />
+        <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4" type="text" placeholder="Email Address" />
         <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4" type="password" placeholder="Password" />
         <div className="mt-4 flex justify-between font-semibold text-sm">
           <label className="flex text-slate-700 hover:text-slate-900 cursor-pointer">
             <input className="mr-1" type="checkbox" />
             <span>Remember Me</span>
           </label>
-          
         </div>
         <div className="text-center md:text-left">
           <button className="mt-4 bg-blue-600 hover:bg-blue-700 px-4 py-2 text-white uppercase rounded text-xs tracking-wider" type="submit">Register</button>
         </div>
+        </form>
         <div className="mt-4 font-semibold  text-slate-700 text-center md:text-left text-md">
           Have an account? <NavLink to="/login" className="text-red-700 hover:underline hover:underline-offset-4 " href="#">Login</NavLink>
         </div>
