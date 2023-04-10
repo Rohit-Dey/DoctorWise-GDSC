@@ -43,11 +43,13 @@ function Register() {
         <div className="my-5 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-black after:mt-0.5 after:flex-1 after:border-t after:border-black">
           <p className="mx-4 mb-0 text-center font-semibold text-gray-900">Or</p>
         </div>
+        <form method="POST">
         <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded" type="text" placeholder="First Name" />
         <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded" type="text" placeholder="Last Name" />
         <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded" type="date" placeholder="Date of Birth" />
         <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded" type="text" placeholder="Email Address" />
         <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4" type="password" placeholder="Password" />
+        </form>
         <div className="mt-4 flex justify-between font-semibold text-sm">
           <label className="flex text-slate-700 hover:text-slate-900 cursor-pointer">
             <input className="mr-1" type="checkbox" />
