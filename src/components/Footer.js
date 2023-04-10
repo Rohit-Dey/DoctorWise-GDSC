@@ -83,9 +83,7 @@ function Footer() {
           DoctorWise
         </h6>
         <p>
-          Here you can use rows and columns to organize your footer
-          content. Lorem ipsum dolor sit amet, consectetur adipisicing
-          elit.
+          We pride ourselves on helping people find the best care possible . Here are some additional links to help you on your journey of healing.
         </p>
       </div>
       <div className=" space-y-3">
@@ -211,11 +209,11 @@ function Footer() {
     </div>
   </div>
   <div className=" p-6 text-center bg-black">
-    <span>© 2023 Copyright:</span>
+    <span>© 2023 Copyright </span>
     <a
       className=" text-xl  font-bold text-stone-300"
       href="https://tailwind-elements.com/"
-      >DoctorWise</a
+      >: DoctorWise</a
     >
   </div>
 </footer>

@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { NavLink, useNavigate } from "react-router-dom";
 function Navbar() {
   return (
     
@@ -11,12 +11,17 @@ function Navbar() {
   <div className="flex md:flex-row justify-right mx-auto  bg-gray-900">
     <ul className="text-lg space-x-5 md:flex md:ml-auto ">
       <li>
-        <a className="w-full md:w-auto p-5 inline-block border-b-4 border-transparent hover:border-white " href="">Home</a>
+        <NavLink to="/" className="w-full md:w-auto p-5 inline-block border-b-4 border-transparent hover:border-white " href="">Home</NavLink>
       </li>
-      <li><a className="w-full md:w-auto p-5 inline-block border-b-4 border-transparent hover:border-white " href="">About</a></li>
-      <li><a className="w-full md:w-auto p-5 inline-block border-b-4 border-transparent hover:border-white " href="">Projects</a></li>
-      <li><a className="w-full md:w-auto p-5 inline-block border-b-4 border-transparent hover:border-white " href="">Blog</a></li>
-      <li><a className="w-full md:w-auto p-5 inline-block border-b-4 border-transparent hover:border-white " href="">Contact</a></li>
+      
+      <li><NavLink to="/finddoctor" className="w-full md:w-auto p-5 inline-block border-b-4 border-transparent hover:border-white " href="">Find a Doctor</NavLink></li>
+      
+      <li><NavLink to="/contact" className="w-full md:w-auto p-5 inline-block border-b-4 border-transparent hover:border-white " href="">Contact Us</NavLink></li>
+      
+    </ul>
+    <ul className='space-x-5 flex flex-row-reverse  text-lg mx-24'>
+    <li><NavLink to="/login" className="w-full  md:w-auto p-5 inline-block border-b-4 border-transparent hover:border-white " href="">Log In</NavLink></li>
+      <li><NavLink to="/register" className="w-full   md:w-auto p-5 inline-block border-b-4 border-transparent hover:border-white " href="">Sign Up</NavLink></li>
     </ul>
   </div>
 </nav>
