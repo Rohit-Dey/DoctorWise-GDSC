@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const router=require("./routes/router")
-const dbUrl ='mongodb://localhost:27017/yelp-camp'
+const dbUrl ='mongodb://localhost:27017/doctor-wise'
 var bodyParser = require('body-parser')
 
 
