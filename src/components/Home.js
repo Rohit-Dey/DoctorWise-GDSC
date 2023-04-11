@@ -2,7 +2,7 @@ import React from 'react'
 
 function Home() {
   return (
-    <div className='bg-gradient-to-b from-gray-900 to-gray-800 text-white font-'>
+    <div className='bg-gradient-to-b from-gray-900 to-gray-800 text-white'>
       <div className="flex flex-col  b  ">
         <h1 className='text-center py-8  text-5xl font-semibold'>Feel Better About Finding Healthcare </h1>
         <div className="images py-5 mx-auto justify-center flex flex-col md:flex-row space-x-24">
