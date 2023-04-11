@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Finddoctor from "./components/Finddoctor";
 import Contact from "./components/Contact";
 import Login from "./components/login_signup/Login";
+
 import Register from "./components/login_signup/Register";
 function App() {
   return (
