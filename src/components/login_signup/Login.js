@@ -1,7 +1,63 @@
-import React from 'react'
+import React,{useState} from 'react'
 import './image.css'
 import { NavLink, useNavigate } from "react-router-dom";
-function login() {
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+function Login() {
+
+  const [logdata, setData] = useState({
+    email:"",
+    password:""
+})
+const adddata=(e)=>{
+  const {name,value}=e.target;
+  setData(()=>{
+      return{
+          ...logdata,
+          [name]:value
+      }
+  })
+}
+const senddata = async (e) => {
+  e.preventDefault();
+
+  const { email, password } = logdata;
+  // console.log(email);
+  try {
+      const res = await fetch("/login", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+              email, password
+          })
+      });
+
+
+      const data = await res.json();
+      // console.log(data);
+
+      if (res.status === 400 || !data) {
+          console.log("invalid details");
+          toast.error("Invalid Details 👎!", {
+              position: "top-center"
+          });
+      } else {
+          //setAccount(data);
+          setData({ ...logdata, email: "", password: "" })
+          toast.success("Login Successfull", {
+              position: "top-center"
+          });
+          //navigate("/buynow")
+      }
+  } catch (error) {
+      console.log("Login Error" + error.message);
+  }
+};
+
+
+
     return (
       <>
       <div className="bef ">
@@ -42,9 +98,10 @@ function login() {
       <div className="my-5 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-black after:mt-0.5 after:flex-1 after:border-t after:border-black">
         <p className="mx-4 mb-0 text-center font-semibold text-gray-900">Or</p>
       </div>
+      <form method="POST">
+      <input value={logdata.email} onChange={adddata} name="email" className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded" type="text" placeholder="Email Address" />
+      <input value={logdata.password} onChange={adddata} name="password" className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4" type="password" placeholder="Password" />
       
-      <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded" type="text" placeholder="Email Address" />
-      <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4" type="password" placeholder="Password" />
       <div className="mt-4 flex justify-between font-semibold text-sm">
         <label className="flex text-slate-700 hover:text-slate-900 cursor-pointer">
           <input className="mr-1" type="checkbox" />
@@ -53,11 +110,13 @@ function login() {
         
       </div>
       <div className="text-center md:text-left">
-        <button className="mt-4 bg-blue-600 hover:bg-blue-700 px-4 py-2 text-white uppercase rounded text-xs tracking-wider" type="submit">Login</button>
+        <button onClick={senddata} className="mt-4 bg-blue-600 hover:bg-blue-700 px-4 py-2 text-white uppercase rounded text-xs tracking-wider" type="submit">Login</button>
       </div>
+      </form>
       <div className="mt-4 font-semibold  text-slate-700 text-center md:text-left text-md">
         Don't have an account? <NavLink to="/register" className="text-red-700 hover:underline hover:underline-offset-4 " href="#">Sign Up</NavLink>
       </div>
+      <ToastContainer/>
     </div>
   </section>
   </div>
@@ -66,4 +125,4 @@ function login() {
     }
 
 
-export default login
+export default Login

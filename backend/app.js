@@ -1,7 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const router=require("./routes/router")
+const dbUrl ='mongodb://localhost:27017/doctor-wise'
+var bodyParser = require('body-parser')
 
-const dbUrl ='mongodb://localhost:27017/yelp-camp'
+
+
 
 mongoose.connect(dbUrl)
 
@@ -14,12 +18,16 @@ db.once("open", () => {
 const app = express();
 
 app.use(express.urlencoded({ extended: true })) //to view req.body otherwise it is empty by default
+app.use(bodyParser.urlencoded())
+//app.use(router)
 
-app.post('/', async(req, res) => {
-    console.log(req);
-})
+app.use(bodyParser.json())
 
-app.listen(4000, () => {
+app.post("/register", function (req, res) {
+    console.log(req.body) // populated!
+    res.send(200, req.body);
+  });
+
+app.listen(3000, () => {
     console.log('Serving On Port 4000')
 })
-
