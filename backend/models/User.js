@@ -2,11 +2,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    fullName:{
+    name:{
         type: String,
         required: true
     },
-    isDoctor: Boolean,
+    
     email: {
         type: String,
         required: true
@@ -14,7 +14,7 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
-    },
+    }
 })
 
 userSchema.plugin(passportLocalMongoose)

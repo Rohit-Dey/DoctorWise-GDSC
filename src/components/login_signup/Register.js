@@ -40,7 +40,7 @@ const senddata = async (e) => {
       const data = await res.json();
       console.log(data);
 
-
+{/*
       if (res.status === 422 || !data) {
           toast.error("Invalid Details , Try Again", {
               position: "top-center"
@@ -53,7 +53,7 @@ const senddata = async (e) => {
           toast.success("Registration Successfull", {
               position: "top-center"
           });
-      }
+      }*/}
   } catch (error) {
       console.log("front end error" + error.message);
   }
