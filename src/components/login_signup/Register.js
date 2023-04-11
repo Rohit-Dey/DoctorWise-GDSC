@@ -1,63 +1,62 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import './image.css'
 import { NavLink, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 function Register() {
-           
+
   const [udata, setUdata] = useState({
-    name:"",
-    email:"", 
-    password:""
-    
-})
-const adddata = (e) => {
-  const { name, value } = e.target;
-  // console.log(name,value);
+    name: "",
+    email: "",
+    password: ""
 
-  setUdata(() => {
-      return {
-          ...udata,
-          [name]: value
-      }
   })
-};
-const senddata = async (e) => {
-  e.preventDefault();
+  const adddata = (e) => {
+    const { name, value } = e.target;
+    // console.log(name,value);
 
-  const { name, email, password} = udata;
-  try {
+    setUdata(() => {
+      return {
+        ...udata,
+        [name]: value
+      }
+    })
+  };
+  const senddata = async (e) => {
+    e.preventDefault();
+
+    const { name, email, password } = udata;
+    try {
       const res = await fetch("/register", {
-          method: "POST",
-          headers: {
-              "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-              name, email, password
-          })
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name, email, password
+        })
       });
 
       const data = await res.json();
-      console.log(data);
+      // console.log(data);
 
-{/*
       if (res.status === 422 || !data) {
-          toast.error("Invalid Details , Try Again", {
-              position: "top-center"
-          });
+        toast.error("Invalid Details , Try Again", {
+          position: "top-center"
+        });
       } else {
-          setUdata({
-              ...udata, name: "", email: "",
-               password: ""
-          });
-          toast.success("Registration Successfull", {
-              position: "top-center"
-          });
-      }*/}
-  } catch (error) {
+        setUdata({
+          ...udata, name: "", email: "",
+          password: ""
+        });
+        toast.success("Registration Successfull", {
+          position: "top-center"
+        });
+      }
+    } catch (error) {
       console.log("front end error" + error.message);
+    }
   }
-}
 
 
 
@@ -65,8 +64,8 @@ const senddata = async (e) => {
 
 
 
-    return (
-        <>
+  return (
+    <>
         <div className="bef ">
        <section className=" rounded-xl  flex flex-col md:flex-row justify-center  space-y-10 md:space-x-16 items-center py-5  mx-auto ">
       {/*<div className="md:w-1/3 max-w-sm">
@@ -137,4 +136,4 @@ const senddata = async (e) => {
   )
 }
 
-export default Register
+export default Register;
