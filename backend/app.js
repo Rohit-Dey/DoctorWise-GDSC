@@ -4,7 +4,7 @@ const router=require("./routes/router")
 const dbUrl = 'mongodb+srv://rohitdey:vAj7wdRuC1j1iQ4H@cluster0.mvwhven.mongodb.net/?retryWrites=true&w=majority'
 var bodyParser = require('body-parser')
 const User = require('./models/User')
-
+const cors=require("cors")
 
 
 
@@ -17,12 +17,13 @@ db.once("open", () => {
 })
 
 const app = express();
-
-app.use(express.urlencoded({ extended: true })) //to view req.body otherwise it is empty by default
-app.use(bodyParser.urlencoded())
-//app.use(router)
 app.use(express.json())
-app.use(bodyParser.json())
+app.use(express.urlencoded({ extended: false })) //to view req.body otherwise it is empty by default
+app.use(cors())
+//app.use(bodyParser.urlencoded())
+//app.use(router)
+
+//app.use(bodyParser.json())
 
 app.post("/register", async function (req, res) {
     const { name, email, password} = req.body;
@@ -52,6 +53,6 @@ app.post("/register", async function (req, res) {
     }
 });
 
-app.listen(8000, () => {
-    console.log('Serving On Port 4000')
+app.listen(5000, () => {
+    console.log('Serving On Port 5000')
 })
