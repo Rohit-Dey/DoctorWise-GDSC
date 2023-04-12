@@ -21,14 +21,35 @@ const app = express();
 app.use(express.urlencoded({ extended: true })) //to view req.body otherwise it is empty by default
 app.use(bodyParser.urlencoded())
 //app.use(router)
-
+app.use(express.json())
 app.use(bodyParser.json())
 
 app.post("/register", async function (req, res) {
-    const newUser = new User(req.body);
-    await newUser.save();
-    console.log(newUser);
-    res.redirect('/')
+    const { name, email, password} = req.body;
+    if (!name || !email || !password) {
+        res.status(422).json({ error: "filll the all details" });
+        console.log("Insufficient Details");
+    };
+    try {
+
+        const preuser = await User.findOne({ email: email });
+
+        if (preuser) {
+            res.status(422).json({ error: "This email is already exist" });
+        } else {
+
+            const finaluser = new User({
+                name, email, password
+            });
+
+            const storedata = await finaluser.save();
+            res.status(201).json(storedata);
+        }
+
+    } catch (error) {
+        console.log("Error" + error.message);
+        res.status(422).send(error);
+    }
 });
 
 app.listen(8000, () => {
