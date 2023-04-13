@@ -1,5 +1,5 @@
 import React from "react";
-
+import AutocompleteSearchBar from "./AutoCompleteSearchBar";
 function Finddoctor() {
   return (
    <>
@@ -11,8 +11,8 @@ function Finddoctor() {
         
         <div class="relative">
           <i class="absolute fa fa-search text-gray-800 top-5 left-4"></i>
-          <input type="text" class="bg-white h-14 w-full px-12 rounded-lg focus:outline-none hover:cursor-pointer" name="" placeholder="Cardiology, Oncology, Neurology etc"/>
           
+          <AutocompleteSearchBar />      
         </div>
        </div>
   </div>
