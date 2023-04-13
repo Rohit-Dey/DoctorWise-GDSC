@@ -7,6 +7,7 @@ function Register() {
   const navigate=useNavigate()
   const [udata, setUdata] = useState({
     name: "",
+    username:"",
     email: "",
     password: ""
 
@@ -25,15 +26,15 @@ function Register() {
   const senddata = async (e) => {
     e.preventDefault();
 
-    const { name, email, password } = udata;
+    const { name, username, email, password } = udata;
     try {
-      const res = await fetch("http://localhost:5000/register", {
+      const res = await fetch("http://localhost:8000/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          name, email, password
+          name, username, email, password
         })
       });
 
@@ -46,7 +47,7 @@ function Register() {
         });
       } else {
         setUdata({
-          ...udata, name: "", email: "",
+          ...udata, name: "", username:"",email: "",
           password: ""
         });
         toast.success("Registration Successfull", {
@@ -109,6 +110,8 @@ function Register() {
         <input onChange={adddata}
                                 value={udata.name} className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded" name="name" type="text" placeholder="Full name" />
         
+        <input onChange={adddata}
+                                value={udata.username} className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded" name="username" type="text" placeholder="Username" />
         
         <input onChange={adddata}
                                 value={udata.email} className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded" name="email" type="text" placeholder="Email Address" />

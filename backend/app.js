@@ -69,8 +69,8 @@ app.post("/login", async (req, res) => {
 });
 
 app.post("/register", async function (req, res) {
-    const { name, email, password} = req.body;
-    if (!name || !email || !password) {
+    const { name, username, email, password} = req.body;
+    if (!name || !username || !email || !password) {
         res.status(422).json({ error: "filll the all details" });
         console.log("Insufficient Details");
     };
@@ -83,7 +83,7 @@ app.post("/register", async function (req, res) {
         } else {
 
             const finaluser = new User({
-                name, email, password
+                name, username, email, password
             });
 
             const storedata = await finaluser.save();
@@ -96,6 +96,6 @@ app.post("/register", async function (req, res) {
     }
 });
 
-app.listen(5000, () => {
+app.listen(8000, () => {
     console.log('Serving On Port 5000')
 })
