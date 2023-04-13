@@ -1,0 +1,49 @@
+.top-img{
+    border: 10px solid;
+    padding: 15px;
+}
+
+.main-img{
+    transition: transform .7s ease-in-out;
+}
+.main-img:hover {
+    transform: rotate(360deg);
+  }
+
+.subs{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+.subtext{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+.subtext:hover {
+    text-shadow:
+                    0 1px 0 rgb(190, 99, 99),
+                    0 2px 0 rgb(85, 85, 176),
+                    0 3px 0 rgb(61, 24, 129),
+                    0 4px 0 rgb(96, 45, 45),
+                    0 5px 0 rgb(170,170,170),
+                    0 6px 0 rgb(165,165,165),
+                    0 7px 0 rgb(160,160,160),
+                    0 8px 0 rgb(155,155,155),
+                    0 9px 0 rgb(150,150,150),
+
+                    0 1px 5px rgba(0,0,0,.05),
+                    0 5px 5px rgba(0,0,0,.10),
+                    0 10px 10px rgba(0,0,0,.15),
+                    0 15px 10px rgba(0,0,0,.20),
+                    0 20px 15px rgba(0,0,0,.25);
+    
+    transition: all 0.3s ease-in-out;
+}
+
+.main-line{
+    font-size: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+}

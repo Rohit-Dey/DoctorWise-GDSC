@@ -10,6 +10,10 @@ const DoctorSchema = new Schema({
         type: Number,
         required: true
     },
+    city:{
+        type:String,
+        required:true
+    },
     specialty:{
         type: String,
         required: true
