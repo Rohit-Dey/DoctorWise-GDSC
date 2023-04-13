@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 function Register() {
-
+  const navigate=useNavigate()
   const [udata, setUdata] = useState({
     name: "",
     email: "",
@@ -52,6 +52,7 @@ function Register() {
         toast.success("Registration Successfull", {
           position: "top-center"
         });
+        navigate("/login")
       }
     } catch (error) {
       console.log("front end error" + error.message);
