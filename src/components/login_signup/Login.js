@@ -1,11 +1,12 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import './image.css'
 import { NavLink, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Logincontext } from '../ContextProvider';
 function Login() {
 const navigate=useNavigate()
-
+const { account, setAccount } = useContext(Logincontext);
   const [logdata, setData] = useState({
     email:"",
     password:""
@@ -45,12 +46,12 @@ const senddata = async (e) => {
               position: "top-center"
           });
       } else {
-          //setAccount(data);
+          setAccount(data);
           setData({ ...logdata, email: "", password: "" })
           toast.success("Login Successfull", {
               position: "top-center"
           });
-          
+          navigate("/finddoctor")
       }
   } catch (error) {
       console.log("Login Error" + error.message);

@@ -1,8 +1,35 @@
-import React, { useState } from "react";
+import React, { useState,useContext,useEffect } from "react";
 import { Transition } from "@headlessui/react";
 import { NavLink } from "react-router-dom";
+
+import { Logincontext } from "./ContextProvider";
 function Navbar(props) {
+  const { account, setAccount } = useContext(Logincontext);
   const [isOpen, setIsOpen] = useState(false);
+  
+  useEffect(() => {
+    const getdetailsvaliduser = async () => {
+      const res = await fetch("http://localhost:8000/validuser", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+  
+      const data = await res.json();
+      // console.log(data);
+  
+      if (res.status !== 201) {
+        console.log("first login");
+      } else {
+        // console.log("cart add ho gya hain");
+        setAccount(data);
+      }
+    }; 
+    getdetailsvaliduser();
+  }, []);
   return (
     <div className="sticky top-0 z-40">
       <nav className="bg-slate-900">
@@ -17,6 +44,9 @@ function Navbar(props) {
                 />
                 <h2 className="text-2xl text-white">DoctorWise</h2>
               </div>
+              {account?(
+              <span className="md:hidden pl-16 text-lg text-gray-300">Hey {account.name}</span>
+              ):(<div></div>)}
               <div className="hidden md:block">
                 <div className="ml-24 flex items-baseline space-x-8">
                   
@@ -41,9 +71,9 @@ function Navbar(props) {
                   >
                     Contact Us
                   </NavLink>
-                  
+                  {!account?(
                   <div className="log md:pl-64">
-
+                
                   <NavLink
                     to="/login"
                     className="text-gray-300 border-b-4 border-transparent hover:border-white px-3 py-2  text-lg font-medium md:mr-2"
@@ -57,7 +87,12 @@ function Navbar(props) {
                   >
                     Sign Up
                   </NavLink>
-                  </div>
+                  </div>):(
+                    <div className="logout md:pl-64">
+                    <span className="text-gray-300 text-lg font-medium">Hey {account.name}</span>
+                    </div>
+                  )
+}
                 </div>
               </div>
             </div>
@@ -140,7 +175,8 @@ function Navbar(props) {
                 >
                   Contact Us
                 </NavLink>
-
+                {!account?
+                (<div>
                 <NavLink
                   to="/login"
                   className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
@@ -154,6 +190,9 @@ function Navbar(props) {
                 >
                   Sign Up
                 </NavLink>
+                </div>):(
+                  <div></div>
+                )}
               </div>
             </div>
           )}
