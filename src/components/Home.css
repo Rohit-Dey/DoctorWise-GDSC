@@ -3,13 +3,6 @@
     padding: 15px;
 }
 
-.main-img{
-    transition: transform .7s ease-in-out;
-}
-.main-img:hover {
-    transform: rotate(360deg);
-  }
-
 .subs{
     font-family: 'Montserrat', sans-serif;
     font-size: 2rem;
