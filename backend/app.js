@@ -2,7 +2,7 @@ const express = require('express');
 require("dotenv").config()
 const mongoose = require('mongoose');
 const router=require("./routes/router")
-const dbUrl = 'mongodb+srv://rohitdey:vAj7wdRuC1j1iQ4H@cluster0.mvwhven.mongodb.net/?retryWrites=true&w=majority'
+const dbUrl = process.env.dbURL
 var bodyParser = require('body-parser')
 const User = require('./models/User')
 const cors=require("cors")
@@ -97,5 +97,5 @@ app.post("/register", async function (req, res) {
 });
 
 app.listen(8000, () => {
-    console.log('Serving On Port 5000')
+    console.log('Serving On Port 8000')
 })
