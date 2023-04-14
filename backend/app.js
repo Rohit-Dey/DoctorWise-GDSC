@@ -8,7 +8,7 @@ const User = require('./models/User')
 const cors=require("cors")
 const bcrypt = require("bcryptjs");
 const cookieParser = require("cookie-parser");
-
+const authenticate=require("./middleware/authenticate")
 mongoose.connect(dbUrl)
 
 const db = mongoose.connection;
@@ -26,6 +26,15 @@ app.use(cors())
 //app.use(router)
 
 //app.use(bodyParser.json())
+app.get("/validuser", authenticate, async (req, res) => {
+    try {
+        const validuserone = await User.findOne({ _id: req.userID });
+        console.log(validuserone + "user hain home k header main pr");
+        res.status(201).json(validuserone);
+    } catch (error) {
+        console.log(error + "error for valid user");
+    }
+});
 app.post("/login", async (req, res) => {
     // console.log(req.body);
     const { email, password } = req.body;
