@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 function Login() {
+const navigate=useNavigate()
 
   const [logdata, setData] = useState({
     email:"",
@@ -24,7 +25,7 @@ const senddata = async (e) => {
   const { email, password } = logdata;
   // console.log(email);
   try {
-      const res = await fetch("/login", {
+      const res = await fetch("http://localhost:8000/login", {
           method: "POST",
           headers: {
               "Content-Type": "application/json"
@@ -49,7 +50,7 @@ const senddata = async (e) => {
           toast.success("Login Successfull", {
               position: "top-center"
           });
-          //navigate("/buynow")
+          
       }
   } catch (error) {
       console.log("Login Error" + error.message);

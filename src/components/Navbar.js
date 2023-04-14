@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 import { NavLink } from "react-router-dom";
+import './Navbar.css'
+
 function Navbar(props) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="sticky top-0 z-40">
-      <nav className="bg-slate-900">
+      <nav className="bg-blue-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
@@ -15,29 +17,29 @@ function Navbar(props) {
                   src="/logo.png"
                   alt="Workflow"
                 />
-                <h2 className="text-2xl text-white">DoctorWise</h2>
+                <h2 className="text-2xl text-white title">DoctorWise</h2>
               </div>
-              <div className="hidden md:block">
-                <div className="ml-24 flex items-baseline space-x-8">
+              <div className="hidden md:block ml-6">
+                <div className="ml-24 flex items-baseline space-x-8 nav">
                   
 
                   <NavLink
                     to="/"
-                    className="ml-24 text-gray-300 border-b-4 border-transparent hover:border-white px-3 py-2  text-lg font-medium"
+                    className="ml-24 text-pink-300 border-b-4 border-transparent hover:border-pink-300 px-3 py-2  text-lg font-medium"
                   >
                     Home
                   </NavLink>
 
                   <NavLink
                     to="/finddoctor"
-                    className="text-gray-300 border-b-4 border-transparent hover:border-white px-3 py-2  text-lg font-medium"
+                    className="text-pink-300 border-b-4 border-transparent hover:border-pink-300 px-3 py-2  text-lg font-medium"
                   >
                     Find A Doctor
                   </NavLink>
 
                   <NavLink
                     to="/contact"
-                    className="text-gray-300 border-b-4 border-transparent hover:border-white px-3 py-2  text-lg font-medium"
+                    className="text-pink-300 border-b-4 border-transparent hover:border-pink-300 px-3 py-2  text-lg font-medium"
                   >
                     Contact Us
                   </NavLink>
