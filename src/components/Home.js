@@ -4,7 +4,7 @@ import './Home.css'
 
 function Home() {
   return (
-    <div className='bg-blue-500 text-white'>
+    <div className='bg-black text-white'>
       <div className="flex flex-col  b  ">
         <h1 className='text-center py-8 text-3xl mb-12 mt-14 main-line'>FEEL BETTER ABOUT FINDING THE RIGHT DOCTOR FOR YOU </h1>
         <div className="images py-5 mx-auto justify-center flex flex-col md:flex-row space-x-24">

@@ -7,7 +7,7 @@ function Navbar(props) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="sticky top-0 z-40">
-      <nav className="bg-blue-600">
+      <nav className="bg-blue-400">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
@@ -19,7 +19,7 @@ function Navbar(props) {
                 />
                 <h2 className="text-2xl text-white title">DoctorWise</h2>
               </div>
-              <div className="hidden md:block ml-12">
+              <div className="hidden md:block ml-6">
                 <div className="ml-24 flex items-baseline space-x-8 nav">
                   
 
