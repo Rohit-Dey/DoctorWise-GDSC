@@ -1,20 +1,25 @@
 import React, { useState,useContext,useEffect } from "react";
 import { Transition } from "@headlessui/react";
-import { NavLink } from "react-router-dom";
-
+import { NavLink, useNavigate } from "react-router-dom";
+import { ToastContainer,toast } from "react-toastify";
 import { Logincontext } from "./ContextProvider";
+import { Navigate } from "react-router-dom";
 function Navbar(props) {
   const { account, setAccount } = useContext(Logincontext);
   const [isOpen, setIsOpen] = useState(false);
-  
+  const navigate=useNavigate()
   useEffect(() => {
     const getdetailsvaliduser = async () => {
       const res = await fetch("http://localhost:8000/validuser", {
         method: "GET",
         headers: {
+          
           Accept: "application/json",
           "Content-Type": "application/json",
+          //"Access-Control-Allow-Origin":"http://localhost:3000",
+          //"Access-Control-Allow-Credentials":true
         },
+       
         credentials: "include",
       });
   
@@ -30,6 +35,38 @@ function Navbar(props) {
     }; 
     getdetailsvaliduser();
   }, []);
+  function lout(){
+    setAccount(false)
+  }
+  const logoutuser = async () => {
+    const res2 = await fetch("http://localhost:8000/logout", {
+      method: "GET",
+      headers: {
+        "Access-Control-Allow-Credentials":true,
+        //"Access-Control-Allow-Origin":"http://localhost:3000",
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      
+      credentials: "include",
+    });
+
+    const data2 = await res2.json();
+    // console.log(data2);
+
+    if (!res2.status === 201) {
+      const error = new Error(res2.error);
+      throw error;
+    } else {
+      setAccount(false);
+      
+      toast.success("Logged Out Successfully", {
+        position: "top-center",
+      });
+      navigate("/");
+     
+    }
+  };
   return (
     <div className="sticky top-0 z-40">
       <nav className="bg-slate-900">
@@ -88,8 +125,9 @@ function Navbar(props) {
                     Sign Up
                   </NavLink>
                   </div>):(
-                    <div className="logout md:pl-64">
+                    <div className="logout md:pl-64 space-x-5">
                     <span className="text-gray-300 text-lg font-medium">Hey {account.name}</span>
+                    <button className="text-gray-300 p-2 rounded-md text-lg font-medium  hover:bg-slate-100 hover:text-slate-700" onClick={lout}>Logout</button>
                     </div>
                   )
 }

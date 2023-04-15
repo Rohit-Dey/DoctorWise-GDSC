@@ -21,7 +21,11 @@ const app = express();
 app.use(express.json())
 app.use(express.urlencoded({ extended: true })) //to view req.body otherwise it is empty by default
 app.use(cookieParser(""));
-app.use(cors())
+app.use(cors({
+    origin: 'http://localhost:3000',
+    credentials:true,
+    methods:"GET,HEAD,PUT,PATCH,POST,DELETE",
+}))
 //app.use(bodyParser.urlencoded())
 //app.use(router)
 
@@ -104,7 +108,21 @@ app.post("/register", async function (req, res) {
         res.status(422).send(error);
     }
 });
+app.get("/logout", authenticate, async (req, res) => {
+    try {
+        req.rootUser.tokens = req.rootUser.tokens.filter((curelem) => {
+            return curelem.token !== req.token
+        });
 
+        res.clearCookie("doctorwise", { path: "/" });
+        req.rootUser.save();
+        res.status(201).json(req.rootUser.tokens);
+        console.log("user logout");
+
+    } catch (error) {
+        console.log(error + "jwt provide then logout");
+    }
+});
 app.listen(8000, () => {
     console.log('Serving On Port 5000')
 })
