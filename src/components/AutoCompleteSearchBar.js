@@ -1,16 +1,9 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState , useEffect} from "react";
 import { Combobox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import SearchButton from "./SearchButton";
 import DoctorCard from './DoctorCard'
 import './Finddoctor.css'
-
-const doctor = {
-  name: 'Dr. John Doe',
-  pictureUrl: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80',
-  specialty: 'Cardiology',
-  clinicName: 'ABC Clinic'
-};
 
 const people = [
   { id: 1, name: "Allergist/Immunologist" },
@@ -36,11 +29,31 @@ const people = [
 ];
 
 export default function Example() {
+  const [data, setData] = useState([]);
   const [selected, setSelected] = useState(people[0]);
   const [showResult, setShowResult] = useState(false);
   const [query, setQuery] = useState("");
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch('http://localhost:8000/doctor');
+      const json = await response.json();
+      setData(json)
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  let filteredData=  [];
   const clickHandler = () => {
+    filteredData = data.filter((doc) =>  {
+      return doc.specialty === selected.name
+  })
+    console.log(filteredData)
     setShowResult(true)
   }
 
@@ -122,21 +135,20 @@ export default function Example() {
         </div>
       </Combobox>
       <SearchButton onClick={clickHandler} />
-      {showResult && 
-        <ul>
-        <li><DoctorCard
-        name={doctor.name}
-        pictureUrl={doctor.pictureUrl}
-        specialty={doctor.specialty}
-        clinicName={doctor.clinicName}
-      /></li>
-      <li><DoctorCard
-        name={doctor.name}
-        pictureUrl={doctor.pictureUrl}
-        specialty={doctor.specialty}
-        clinicName={doctor.clinicName}
-        /></li></ul>
-      }
+      {showResult && filteredData.map((doc) => (
+          <li key={doc}>
+            <DoctorCard 
+            name={doc.name}
+            age={doc.age}
+            pictureUrl={doc.imageUrl}
+            city={doc.city}
+            specialty={doc.specialty}
+            experience={doc.experience}
+            clinicName={doc.workplace}
+            rating={doc.rating} />
+          </li>
+        ))}
+      
     </>
   );
 }

@@ -1,14 +1,13 @@
 const express = require('express');
 require("dotenv").config()
 const mongoose = require('mongoose');
-const router=require("./routes/router")
 const dbUrl = process.env.dbURL
-var bodyParser = require('body-parser')
 const User = require('./models/User')
 const cors=require("cors")
 const bcrypt = require("bcryptjs");
 const cookieParser = require("cookie-parser");
 const authenticate=require("./middleware/authenticate")
+const Doctor = require('./models/Doctor')
 mongoose.connect(dbUrl)
 
 const db = mongoose.connection;
@@ -30,6 +29,17 @@ app.use(cors({
 //app.use(router)
 
 //app.use(bodyParser.json())
+app.get("/doctor", async(req, res) => {
+    try{
+        const doctors = await Doctor.find({});
+        console.log(doctors);
+        res.status(200).json(doctors);
+    }
+    catch(e){
+        console.log(e)
+    }
+})
+
 app.get("/validuser", authenticate, async (req, res) => {
     try {
         const validuserone = await User.findOne({ _id: req.userID });
