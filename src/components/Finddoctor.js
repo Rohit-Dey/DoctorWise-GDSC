@@ -1,12 +1,15 @@
 import React from "react";
 import AutocompleteSearchBar from "./AutoCompleteSearchBar";
+import './Home.css'
+import './Finddoctor.css'
+
 
 function Finddoctor() {
 
   return (
     <>
       <div class="py-20 h-1/2 px-2 space-y-10 bg-gray-900 text-white">
-        <h1 className="text-2xl text-center font-semibold">Find Doctors by their Specialty</h1>
+        <h1 className="text-2xl text-center font-semibold doctor-title">Find Doctors by their Specialty</h1>
         <div class="max-w-md mx-auto rounded-lg overflow-hidden md:max-w-xl">
           <div class="md:flex">
             <div class="w-full p-3">
