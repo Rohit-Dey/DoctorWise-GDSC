@@ -16,12 +16,12 @@ const people = [
   { id: 10, name: "Hematologist" },
   { id: 11, name: "Nephrologist" },
   { id: 12, name: "Neurologist" },
-  { id: 13, name: "Oncologist"},
+  { id: 13, name: "Oncologist" },
   { id: 14, name: "Ophthalmologist" },
   { id: 15, name: "Pathologist" },
   { id: 16, name: "Psychiatrist" },
   { id: 17, name: "Pulmonologist" },
-  { id: 18, name: "Radiologist"},
+  { id: 18, name: "Radiologist" },
   { id: 19, name: "Rheumatologist" },
   { id: 20, name: "Urologist" },
 ];
@@ -51,17 +51,22 @@ else{
 
 export default function Example() {
   const [selected, setSelected] = useState(people[0]);
+  const [showResult, setShowResult] = useState(false);
   const [query, setQuery] = useState("");
+
+  const clickHandler = () => {
+    setShowResult(true)
+  }
 
   const filteredPeople =
     query === ""
       ? people
       : people.filter((person) =>
-          person.name
-            .toLowerCase()
-            .replace(/\s+/g, "")
-            .includes(query.toLowerCase().replace(/\s+/g, ""))
-        );
+        person.name
+          .toLowerCase()
+          .replace(/\s+/g, "")
+          .includes(query.toLowerCase().replace(/\s+/g, ""))
+      );
 
   return (
    <>
