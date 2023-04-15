@@ -2,8 +2,7 @@ import DoctorCard from "./DoctorCard"
 import './Finddoctor.css'
 
 const ShowCard = (props) => {
-    console.log("inside")
-    console.log(props.data)
+    props.data.sort((a, b) => a.rating > b.rating);
     return (props.data.map((doctor) => (<li key={doctor._id}>
             <DoctorCard
                 name={doctor.name}
