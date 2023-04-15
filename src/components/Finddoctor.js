@@ -23,7 +23,7 @@ function Finddoctor() {
         </div>
 
       </div>
-      <div className="promo text-white bg-gray-900  text-black flex flex-row justify-center space-x-10 py-24 z-1">
+      <div className="promo text-white bg-gray-900  text-black flex flex-row justify-center space-x-10 py-24 z-1 subtext">
         <div className="card rounded-md  w-1/4 flex flex-col space-y-8">
 
           <h3 className='text-center p-3 text-xl text-white font-bold'>Profiles for Every Doctor in the Country</h3>
