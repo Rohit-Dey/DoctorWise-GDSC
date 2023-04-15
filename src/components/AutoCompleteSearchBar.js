@@ -1,9 +1,9 @@
-import { Fragment, useState , useEffect} from "react";
+import { React, Fragment, useState , useEffect} from "react";
 import { Combobox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import SearchButton from "./SearchButton";
-import DoctorCard from './DoctorCard'
-import './Finddoctor.css'
+import ShowCard from "./ShowCard";
+import NoResultsFound from "./NoResult";
 
 const people = [
   { id: 1, name: "Allergist/Immunologist" },
@@ -30,13 +30,13 @@ const people = [
 
 export default function Example() {
   const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   const [selected, setSelected] = useState(people[0]);
-  const [showResult, setShowResult] = useState(false);
   const [query, setQuery] = useState("");
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [selected]);
 
   const fetchData = async () => {
     try {
@@ -48,13 +48,11 @@ export default function Example() {
     }
   };
 
-  let filteredData=  [];
   const clickHandler = () => {
-    filteredData = data.filter((doc) =>  {
+    setFilteredData(data.filter((doc) =>  {
       return doc.specialty === selected.name
-  })
+    }))
     console.log(filteredData)
-    setShowResult(true)
   }
 
   const filteredPeople =
@@ -135,20 +133,7 @@ export default function Example() {
         </div>
       </Combobox>
       <SearchButton onClick={clickHandler} />
-      {showResult && filteredData.map((doc) => (
-          <li key={doc}>
-            <DoctorCard 
-            name={doc.name}
-            age={doc.age}
-            pictureUrl={doc.imageUrl}
-            city={doc.city}
-            specialty={doc.specialty}
-            experience={doc.experience}
-            clinicName={doc.workplace}
-            rating={doc.rating} />
-          </li>
-        ))}
-      
+     {filteredData.length === 0 ? <NoResultsFound/> : <ShowCard data={filteredData} />}
     </>
   );
 }
