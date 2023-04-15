@@ -1,6 +1,8 @@
 import React from "react";
 import AutocompleteSearchBar from "./AutoCompleteSearchBar";
+
 function Finddoctor() {
+
   return (
     <>
       <div class="py-20 h-1/2 px-2 space-y-10 bg-gray-900 text-white">
@@ -10,7 +12,7 @@ function Finddoctor() {
             <div class="w-full p-3">
 
               <div class="relative z-40">
-                <AutocompleteSearchBar />
+                  <AutocompleteSearchBar />
               </div>
             </div>
           </div>
