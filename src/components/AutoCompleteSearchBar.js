@@ -1,7 +1,8 @@
 import { Fragment, useState } from "react";
 import { Combobox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
-
+import { Navigate, useNavigate } from "react-router-dom";
+const navigate=useNavigate()
 const people = [
   { id: 1, name: "Allergist/Immunologist" },
   { id: 2, name: "Anesthesiologist" },
@@ -24,6 +25,29 @@ const people = [
   { id: 19, name: "Rheumatologist" },
   { id: 20, name: "Urologist" },
 ];
+const [sdata, setSdata] = useState("")
+const [ddata, setDdata] = useState("")
+const special = async (e) => {
+  const res = await fetch("http://localhost:8000/sdetails", {
+    method: "GET",
+    headers: {
+        Accept:"application/json",
+        "Content-Type": "application/json"
+    },
+    body:JSON.stringify({
+      sdata
+    })
+   
+});
+const data = await res.json();
+if (res.status === 422 || !data){
+  console.log("Error in autocomplete search bar")
+}
+else{
+  setDdata(data);
+}
+
+}
 
 export default function Example() {
   const [selected, setSelected] = useState(people[0]);
@@ -40,7 +64,7 @@ export default function Example() {
         );
 
   return (
-   
+   <>
         <Combobox value={selected} onChange={setSelected}>
           <div className="relative mt-14">
             <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm">
@@ -98,6 +122,8 @@ export default function Example() {
                                 className="h-5 w-5"
                                 aria-hidden="true"
                               />
+                              {active?(special(setSdata(person.name))
+                              ):null}
                             </span>
                           ) : null}
                         </>
@@ -109,6 +135,13 @@ export default function Example() {
             </Transition>
           </div>
         </Combobox>
-
+        <div>
+          {
+            ddata && ddata.map((d)=>(
+                <div></div>
+            ))
+          }
+        </div>
+</>
   );
 }

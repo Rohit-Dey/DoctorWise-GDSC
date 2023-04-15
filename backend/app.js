@@ -7,6 +7,7 @@ var bodyParser = require('body-parser')
 const User = require('./models/User')
 const cors=require("cors")
 const bcrypt = require("bcryptjs");
+const Doctor=require("./models/Doctor")
 const cookieParser = require("cookie-parser");
 const authenticate=require("./middleware/authenticate")
 mongoose.connect(dbUrl)
@@ -90,6 +91,7 @@ app.post("/register", async function (req, res) {
     try {
 
         const preuser = await User.findOne({ email: email });
+        
 
         if (preuser) {
             res.status(422).json({ error: "This email is already exist" });
@@ -121,6 +123,21 @@ app.get("/logout", authenticate, async (req, res) => {
 
     } catch (error) {
         console.log(error + "jwt provide then logout");
+    }
+});
+app.get("/sdetails", async (req, res) => {
+    try {
+        const {search}=req.params;
+        const validdoctors = await User.find({},{ specialty: search });
+        let arr=[]
+        validdoctors.forEach(doc=>{
+            arr.push(doc)
+        })
+        
+
+        res.status(201).json(doc);
+    } catch (error) {
+        console.log(error + " :finding doctors");
     }
 });
 app.listen(8000, () => {
