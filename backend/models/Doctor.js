@@ -19,12 +19,12 @@ const DoctorSchema = new Schema({
         required: true
     },
     experience:{
-        type: String,
+        type: Number,
         required: true
     },
     workplace: String,
-    ratingSum: Number,
-    peopleRated : Number
+    rating: Number,
+    imageUrl: String
 })
 
 module.exports = mongoose.model('Doctor', DoctorSchema);
