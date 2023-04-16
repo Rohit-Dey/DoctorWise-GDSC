@@ -71,7 +71,7 @@ function Navbar(props) {
     }
   };
   return (
-    <div className="sticky top-0 z-40">
+    <div className=" top-0 z-40">
       <nav className="bg-blue-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
