@@ -11,6 +11,11 @@
     font-weight: 600;
 }
 
+.sum{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
 .subtext:hover {
     text-shadow:
                     0 1px 0 rgb(190, 99, 99),
