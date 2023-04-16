@@ -42,7 +42,7 @@ export default function Example(props) {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('http://localhost:8000/doctor');
+      const response = await fetch('https://doctorwisebackend.onrender.com/doctor');
       const json = await response.json();
       setData(json)
     } catch (error) {

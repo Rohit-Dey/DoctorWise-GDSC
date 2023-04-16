@@ -12,7 +12,7 @@ function Navbar(props) {
   const navigate=useNavigate()
   useEffect(() => {
     const getdetailsvaliduser = async () => {
-      const res = await fetch(`${process.env.serverURL}/validuser`, {
+      const res = await fetch(`https://doctorwisebackend.onrender.com/validuser`, {
         method: "GET",
         headers: {
           
