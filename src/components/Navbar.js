@@ -12,7 +12,7 @@ function Navbar(props) {
   const navigate=useNavigate()
   useEffect(() => {
     const getdetailsvaliduser = async () => {
-      const res = await fetch("http://localhost:8000/validuser", {
+      const res = await fetch(`${process.env.serverURL}/validuser`, {
         method: "GET",
         headers: {
           
