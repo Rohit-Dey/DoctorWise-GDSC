@@ -118,10 +118,9 @@ function Register() {
         <input onChange={adddata}
                                 value={udata.password} className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4" name="password" type="password" placeholder="Password" />
         
-        <div className="mt-4 flex justify-between font-semibold text-sm">
+        <div className="mt-4 flex justify-between font-semibold text-md">
           <label className="flex text-slate-700 hover:text-slate-900 cursor-pointer">
-            <input className="mr-1" type="checkbox" />
-            <span>Remember Me</span>
+            <NavLink to="/contact">Register as a doctor</NavLink>
           </label>
           
         </div>

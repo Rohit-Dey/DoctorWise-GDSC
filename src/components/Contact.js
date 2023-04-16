@@ -16,9 +16,7 @@ function Contact() {
             GET IN TOUCH WITH US
           </h2>
           <p class="text-body-color mb-9 text-base leading-relaxed">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim adiqua
-            minim veniam quis nostrud exercitation ullamco
+            Our dedicated customer service team is ready to answer any and all questions you may have. Doctors who wish to register with us should mention so in the form to begin our verification process.
           </p>
           <div class="mb-8 flex w-full max-w-[370px]">
             <div
@@ -38,7 +36,7 @@ function Contact() {
             <div class="w-full">
               <h4 class="text-dark mb-1 text-xl font-bold">Our Location</h4>
               <p class="text-body-color text-base">
-                99 S.t Jomblo Park Pekanbaru 28292. Indonesia
+              The Executive Centre, Level 3 B/8, DLF Center, Sansad Marg, Connaught Place, New Delhi - 110010, India.
               </p>
             </div>
           </div>
@@ -85,7 +83,7 @@ function Contact() {
             </div>
             <div class="w-full">
               <h4 class="text-dark mb-1 text-xl font-bold">Email Address</h4>
-              <p class="text-body-color text-base">info@yourdomain.com</p>
+              <p class="text-body-color text-base">help@doctorwise.com</p>
             </div>
           </div>
         </div>
@@ -124,7 +122,7 @@ function Contact() {
             <div>
               <button
                 type="submit"
-                class="bg-primary border-primary w-full rounded border p-3 text-white transition hover:bg-opacity-90"
+                class="bg-gray-800 border-primary w-full rounded border p-3 text-white transition hover:bg-opacity-90 "
               >
                 Send Message
               </button>
