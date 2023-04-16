@@ -5,7 +5,7 @@ import './DoctorCard.css'
 const DoctorCard = (props) => {
   const [showModal, setShowModal]=useState(false)
   return (
-    <div className="max-w-sm rounded-lg overflow-hidden shadow-lg z-0">
+    <div className="max-w-sm rounded-lg overflow-hidden shadow-lg">
       <img className="w-full" src={props.pictureUrl} alt={`${props.name} profile`} />
       <div className="px-6 py-4 bg-blue-300 card-font">
         <div className="font-bold text-2xl mb-2 name">{props.name}</div>

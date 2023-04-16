@@ -20,7 +20,7 @@ function Finddoctor() {
           <div class="md:flex">
             <div class="w-full p-3">
 
-              <div class="relative z-40">
+              <div class="z-40">
                   <AutocompleteSearchBar />
               </div>
             </div>
