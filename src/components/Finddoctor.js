@@ -1,13 +1,15 @@
-import React from "react";
+import React,{useContext} from "react";
 import AutocompleteSearchBar from "./AutoCompleteSearchBar";
 import './Home.css'
 import './Finddoctor.css'
-
-
+import { Navigate, useNavigate } from "react-router-dom";
+import { Logincontext } from "./ContextProvider";
 function Finddoctor() {
 
   return (
     <>
+    
+    
       <div class="py-20 h-1/2 px-2 space-y-10 bg-gray-900 text-white">
         <h1 className="text-2xl text-center font-semibold doctor-title">Find Doctors by their Specialty</h1>
         <div class="max-w-md mx-auto rounded-lg overflow-hidden md:max-w-xl">
@@ -41,6 +43,7 @@ function Finddoctor() {
           <img className='h-[100px] mx-auto items-center my-auto' src="/nmod.jpg" alt="" />
         </div>
       </div>
+    
     </>
   );
 }

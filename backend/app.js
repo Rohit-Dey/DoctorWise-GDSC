@@ -8,7 +8,7 @@ const bcrypt = require("bcryptjs");
 const Doctor=require("./models/Doctor")
 const cookieParser = require("cookie-parser");
 const authenticate=require("./middleware/authenticate")
-const Doctor = require('./models/Doctor')
+
 mongoose.connect(dbUrl)
 
 const db = mongoose.connection;
