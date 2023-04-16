@@ -28,7 +28,7 @@ function Register() {
 
     const { name, username, email, password } = udata;
     try {
-      const res = await fetch("http://localhost:8000/register", {
+      const res = await fetch("https://doctorwisebackend.onrender.com/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
