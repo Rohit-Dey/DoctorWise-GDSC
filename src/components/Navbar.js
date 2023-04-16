@@ -97,19 +97,13 @@ function Navbar(props) {
                   >
                     Home
                   </NavLink>
-                {account?(
+                
                   <NavLink
                     to="/finddoctor"
                     className="text-pink-300 border-b-4 border-transparent hover:border-pink-300 px-3 py-2  text-lg font-medium"
                   >
                     Find A Doctor
-                  </NavLink>)
-                  :(<NavLink
-                    to="/login"
-                    className="text-pink-300 border-b-4 border-transparent hover:border-pink-300 px-3 py-2  text-lg font-medium"
-                  >
-                    Find A Doctor
-                  </NavLink>)}
+                  </NavLink>
               
                   <NavLink
                     to="/contact"
@@ -208,20 +202,13 @@ function Navbar(props) {
                 >
                   Home
                 </NavLink>
-            {account ?(
+            
                 <NavLink
                   to="/finddoctor"
                   className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Find A Doctor
-                </NavLink>):(
-                  <NavLink
-                  to="/login"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                >
-                  Find A Doctor
                 </NavLink>
-                )}
 
                 <NavLink
                   to="/contact"
