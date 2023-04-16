@@ -12,7 +12,7 @@ function Navbar(props) {
   const navigate=useNavigate()
   useEffect(() => {
     const getdetailsvaliduser = async () => {
-      const res = await fetch(`https://doctorwisebackend.onrender.com/validuser`, {
+      const res = await fetch("https://doctorwisebackend.onrender.com/validuser", {
         method: "GET",
         headers: {
           
@@ -42,7 +42,7 @@ function Navbar(props) {
     navigate("/login")
   }
   const logoutuser = async () => {
-    const res2 = await fetch("http://localhost:8000/logout", {
+    const res2 = await fetch("https://doctorwisebackend.onrender.com/logout", {
       method: "GET",
       headers: {
         "Access-Control-Allow-Credentials":true,
