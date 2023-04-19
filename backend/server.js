@@ -22,7 +22,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true })) //to view req.body otherwise it is empty by default
 app.use(cookieParser(""));
 app.use(cors({
-    origin: 'https://doctorwise-2z8v.onrender.com',
+    origin: ['https://doctorwise-2z8v.onrender.com', 'http://34.131.156.208:3000'],
     credentials:true,
     methods:"GET,HEAD,PUT,PATCH,POST,DELETE",
 }))
